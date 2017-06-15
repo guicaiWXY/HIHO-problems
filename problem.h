@@ -8,9 +8,9 @@
 
 class Problem {
 public:
-    int run(int argc, char**argv);
-    int run();
-    int test();
+    virtual int run(int argc, char**argv) = 0;
+    virtual int run() = 0;
+    virtual int test() = 0;
 };
 
 

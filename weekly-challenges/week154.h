@@ -5,22 +5,23 @@
 #define HIHO_PROBLEMS_WEEK154_H
 
 #include "../problem.h"
-#include <cstdio>
 
-#define SQR(x) ((x) * (x))
-#define INTERSECTED(i, j) (SQR(x[(i)] - x[(j)]) + SQR(y[(i)] - y[(j)])) <= SQR(r[(i)] + r[(j)])
-
-int x[1000];
-int y[1000];
-int r[1000];
-
+struct interval {
+    int lower;
+    int upper;
+//    int root;
+};
 class week154: public Problem {
     // need to publicly inherit from Problem
 public:
+    int run(int, char **) { return 0;}
     int run();
+    int test() { return 0;}
 
 private:
-   int judge(int N);
+    int judge(int N);
+    void quick_union(int i, int j);
+    int find(int i);
 };
 
 #endif //HIHO_PROBLEMS_WEEK154_H
