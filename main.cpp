@@ -5,9 +5,12 @@
 #include <cstdio>
 #include "problem.h"
 #include "weekly-challenges/week154.h"
+//#include "weekly-challenges/week154_AC1.h"
+
 int main() {
-    Problem *week_154 = new week154();
-    if (int res = week_154->run()) {
+//    Problem *problem = new week154_AC1();
+    Problem *problem = new week154();
+    if (int res = problem->run()) {
         printf("Problem not passed.\n");
     } else
         printf("Done");

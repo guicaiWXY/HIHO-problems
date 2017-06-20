@@ -4,19 +4,14 @@
 #ifndef HIHO_PROBLEMS_WEEK154_H
 #define HIHO_PROBLEMS_WEEK154_H
 
-#include "../problem.h"
+#include "abstract_problem.h"
 
-struct interval {
-    int lower;
-    int upper;
-//    int root;
-};
-class week154: public Problem {
+class week154: public AbstractProblem {
     // need to publicly inherit from Problem
 public:
-    int run(int, char **) { return 0;}
+    week154() {}
+    ~week154() {}
     int run();
-    int test() { return 0;}
 
 private:
     int judge(int N);
