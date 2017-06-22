@@ -5,7 +5,7 @@
 #ifndef HIHO_PROBLEMS_ABSTRACT_PROBLEM_H
 #define HIHO_PROBLEMS_ABSTRACT_PROBLEM_H
 
-#include "../problem.h"
+#include "problem.h"
 
 class AbstractProblem: public Problem{
 public:

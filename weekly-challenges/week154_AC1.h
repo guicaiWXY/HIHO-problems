@@ -5,7 +5,7 @@
 #ifndef HIHO_PROBLEMS_WEEK154_AC1_H
 #define HIHO_PROBLEMS_WEEK154_AC1_H
 
-#include "abstract_problem.h"
+#include "../abstract_problem.h"
 
 class week154_AC1: public AbstractProblem {
 public:

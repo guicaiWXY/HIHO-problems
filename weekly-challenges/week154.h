@@ -4,7 +4,7 @@
 #ifndef HIHO_PROBLEMS_WEEK154_H
 #define HIHO_PROBLEMS_WEEK154_H
 
-#include "abstract_problem.h"
+#include "../abstract_problem.h"
 
 class week154: public AbstractProblem {
     // need to publicly inherit from Problem
