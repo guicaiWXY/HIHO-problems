@@ -3,14 +3,9 @@
 //
 
 #include "ms_6_17_p1.h"
+#include "../util/debug.h"
 #include <cmath>
 #include <cstdio>
-//#define _DEBUG
-#ifdef _DEBUG
-#define DEBUG(...) printf(__VA_ARGS__)
-#else
-#define DEBUG(format, ...)
-#endif
 
 int P, Q, N;
 
