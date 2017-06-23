@@ -4,12 +4,17 @@
 
 #include "_1015_kmp.h"
 #include <cstdio>
+#include <cstring>
 
 int N;
 char pattern[20][10000];
 char input[20][1000000];
 char next[10000];
 
+void construct_next() {
+    // TODO
+
+}
 void get_currence(int i) {
     char *pat = pattern[i];
     char *in = input[i];
@@ -18,6 +23,12 @@ void get_currence(int i) {
      * 2. scan input according to <next>
      * */
     // TODO
+    construct_next();
+    int len_pattern = strlen(pat);
+    int len_input = strlen(in);
+    for (int i = 0; i < len_input; ++i) {
+
+    }
 }
 
 int _1015_kmp::run() {
