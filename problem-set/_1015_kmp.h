@@ -7,7 +7,7 @@
 
 #include "../abstract_problem.h"
 
-class _1015_kmp: AbstractProblem {
+class _1015_kmp: public AbstractProblem {
 public:
     _1015_kmp(){}
     ~_1015_kmp(){}
