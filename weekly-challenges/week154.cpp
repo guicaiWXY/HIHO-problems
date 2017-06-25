@@ -2,9 +2,6 @@
 // Created by wxy on 17.6.15.
 //
 
-// Get Wrong Answer now.
-// TODO: don't know why...
-
 #include <vector>
 #include <cstring>
 #include "week154.h"

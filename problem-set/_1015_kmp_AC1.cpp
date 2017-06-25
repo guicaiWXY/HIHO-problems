@@ -2,7 +2,7 @@
 // Created by 11206 on 2017/6/25.
 //
 #include "_1015_kmp.h"
-
+#include "../util/debug.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -29,6 +29,10 @@ int kmp(string str, string pattern) {
   int* next = new int[pattern.size() + 1];
   next[0] = -1;
   calNext(pattern, 1, next);
+  int _index = 0;
+  for (; _index < pattern.size() + 1; ++_index) {
+      DEBUG("next[%d]=%d ", _index, next[_index]);
+  }
 
   // pattern match
   int m = 0;
