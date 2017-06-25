@@ -7,11 +7,11 @@
 
 #include "../abstract_problem.h"
 
-class week155:AbstractProblem {
+class week155:public AbstractProblem {
 public:
     week155(){}
     ~week155(){}
-    int run() {}
+    int run();
 };
 
 
