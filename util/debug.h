@@ -5,7 +5,7 @@
 #ifndef HIHO_PROBLEMS_DEBUG_H
 #define HIHO_PROBLEMS_DEBUG_H
 
-//#define _DEBUG
+#define _DEBUG
 #include <cstdio>
 #ifdef _DEBUG
 #define DEBUG(...) printf(__VA_ARGS__)
