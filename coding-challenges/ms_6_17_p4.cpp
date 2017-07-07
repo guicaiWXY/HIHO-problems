@@ -88,7 +88,7 @@ long long DP_solve(int size, int left, int *pos_stack, int len) {
         for (int i = 1; i < size-left; i++) {
             for (int j = i; j < size-left; j++) {
                 int n2 = (pos_stack[size-i] - pos_stack[size-1-i]) / 2 + 1;
-                f2[i][j] = (n2 * f2[i-1][j-1] + f2[i-1][j]) % MOD;
+                f2[i][j] = ((n2 * f2[i-1][j-1] % MOD) + f2[i-1][j]) % MOD;
             }
         }
 //        DEBUG("f2:\n");
