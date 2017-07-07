@@ -6,6 +6,7 @@
 #define HIHO_PROBLEMS_ABSTRACT_PROBLEM_H
 
 #include "problem.h"
+#include "util/debug.h"
 
 class AbstractProblem: public Problem{
 public:
