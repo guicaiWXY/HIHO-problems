@@ -59,77 +59,56 @@ int longestPalindrome(string s) {
 int my_version(char *txt) {
     static char text[2000010];
     static int f[2000010];
+    const char del = '\1';
     int len = strlen(txt);
 //    DEBUG("len=%d\n", len);
     if (len == 1) {
         return 1;
     }
     text[0] = 2;
-    text[1] = txt[0];
-        DEBUG("%s\n", txt);
+    text[1] = del;
+    DEBUG("%s\n", txt);
 
-    for (int i = len; i >= 1; i--) {
-        text[(i << 1)+1] = txt[i];
-        text[(i << 1)] = 1;
+    for (int i = 0; i < len; i++) {
+        text[(i << 1)+2] = txt[i];
+        text[(i << 1)+3] = del;
     }
-    int n_len = (len << 1);
+
+    int n_len = 2 * len + 2;
     text[n_len] = 0;
-//        DEBUG("%s\n", text);
+    DEBUG("%s\n", text);
 
     // J for current index with max right boundary
-    int J = 1;
-    int fJ = 1;
-    f[0] = 1;
-    f[1] = 1;
-    int max_j = 0;
+    int id = 0;
+    f[0] = 0;
+    int mx = 0;
     int max = 0;
-    for (int j = 2; j < n_len; j++) {
+    for (int i = 1; i < n_len; i++) {
         int auxilary;
-        if (j >= J + fJ / 2) {
-            int tmp = 1;
-            while (text[j - tmp] == text[j + tmp])
-                tmp++;
-            auxilary = tmp * 2 - 1;
+        if (i >= id + f[id]) {
+            auxilary = 1;
         } else {
-            int sym = 2 * J - j;
-            int aux1 = f[sym];
-            int aux2 = fJ - 2 * (j - J);
-            if (aux1 != aux2) {
-                auxilary = MIN(aux1, aux2);
-            } else {
-                int tmp = aux1 / 2 + 1;
-                while (text[j - tmp] == text[j + tmp]) {
-                    tmp++;
-                }
-                auxilary = 2 * tmp - 1;
-            }
+            int j = 2 * id - i;
+            int aux1 = f[j];
+            int aux2 = mx - i;
+            auxilary = MIN(aux1, aux2);
         }
+        while (text[i+auxilary] == text[i-auxilary])
+            auxilary++;
         if (auxilary > max) {
-            max_j = j;
             max = auxilary;
         }
-        if (j + auxilary / 2 > J + fJ / 2) {
-            J = j;
-            fJ = auxilary;
+        if (i + auxilary > mx) {
+            id = i;
+            mx = i+auxilary;
         }
-        f[j] = auxilary;
-//            DEBUG("f[%d]= %d ", j, auxilary);
+        f[i] = auxilary;
+        DEBUG("f[%d]= %d ", i, auxilary);
     }
-//        DEBUG("\n");
-//    DEBUG("max=%d\n", max);
+    DEBUG("\n");
+    DEBUG("max=%d\n", max);
 
-    if (max == 1) {
-        return 1;
-    }
-    if (text[max_j] != 1 && text[max_j - max / 2] == 1)
-        return (max - 1) / 2;
-    else if (text[max_j] != 1) {
-        return (max + 1) / 2;
-    } else if (text[max_j - max / 2] == 1) {
-        return (max - 1) / 2;
-    } else {
-        return (max + 1) / 2;
-    }
+    return max-1;
 }
 
 int _1032_longest_palindromic_substring::test() {
@@ -148,6 +127,7 @@ int _1032_longest_palindromic_substring::test() {
         } else
             DEBUG("result=%d ", result1);
     }
+    return 0;
 }
 int _1032_longest_palindromic_substring::run() {
     int N;
@@ -155,84 +135,13 @@ int _1032_longest_palindromic_substring::run() {
     static char text[2000010];
     static int f[2000010];
     for (int turn = 0; turn < N; turn++) {
-        scanf("%s", text + 1);
+        scanf("%s", text);
 
-        longestPalindrome(string(text + 1));
+//        longestPalindrome(string(text + 1));
 //        continue;
 
-        int len = strlen(text + 1);
-        if (len == 1) {
-            printf("1\n");
-            continue;
-        }
-        text[0] = 2;
-//        DEBUG("%s\n", text);
-
-        /*
-         * Step1: adding '$'
-         * */
-        for (int i = len; i > 1; i--) {
-            text[(i << 1) - 1] = text[i];
-            text[(i << 1) - 2] = 1;
-        }
-        int n_len = (len << 1);
-        text[n_len] = 0;
-//        DEBUG("%s\n", text);
-
-        // J for current index with max right boundary
-        int J = 1;
-        int fJ = 1;
-        f[0] = 1;
-        f[1] = 1;
-        int max_j = 0;
-        int max = 0;
-        for (int j = 2; j < n_len; j++) {
-            int auxilary;
-            if (j >= J + fJ / 2) {
-                int tmp = 1;
-                while (text[j - tmp] == text[j + tmp])
-                    tmp++;
-                auxilary = tmp * 2 - 1;
-            } else {
-                int sym = 2 * J - j;
-                int aux1 = f[sym];
-                int aux2 = fJ - 2 * (j - J);
-                if (aux1 != aux2) {
-                    auxilary = MIN(aux1, aux2);
-                } else {
-                    int tmp = aux1 / 2 + 1;
-                    while (text[j - tmp] == text[j + tmp]) {
-                        tmp++;
-                    }
-                    auxilary = 2 * tmp - 1;
-                }
-            }
-            if (auxilary > max) {
-                max_j = j;
-                max = auxilary;
-            }
-            if (j + auxilary / 2 > J + fJ / 2) {
-                J = j;
-                fJ = auxilary;
-            }
-            f[j] = auxilary;
-//            DEBUG("f[%d]= %d ", j, auxilary);
-        }
-//        DEBUG("\n");
-
-        if (max == 1) {
-            printf("1\n");
-            continue;
-        }
-        if (text[max_j] != 1 && text[max_j - max / 2] == 1)
-            printf("%d\n", (max - 1) / 2);
-        else if (text[max_j] != 1) {
-            printf("%d\n", (max + 1) / 2);
-        } else if (text[max_j - max / 2] == 1) {
-            printf("%d\n", (max - 1) / 2);
-        } else {
-            printf("%d\n", (max + 1) / 2);
-        }
+        int longest = my_version(text);
+        printf("%d\n", longest);
     }
 
     return 0;

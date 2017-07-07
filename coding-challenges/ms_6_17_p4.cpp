@@ -27,7 +27,7 @@ long long permutation(int n, int k) {
 }
 
 long long DP_solve(int size, int left, int *pos_stack, int len) {
-    long long result1 = 0, result2 = 0;
+    long long result1 = 1, result2 = 1;
     /*
      * Step 1: deal with redundant right parentheses
      * */
@@ -52,6 +52,7 @@ long long DP_solve(int size, int left, int *pos_stack, int len) {
                 f1[i][j] = ((n1 * f1[i - 1][j - 1] % MOD) + f1[i - 1][j]) % MOD;
             }
         }
+
 //        DEBUG("f1:\n");
 //        for (int i = 0; i < left; i++) {
 //            for (int j = 0; j < left; j++) {
@@ -62,6 +63,7 @@ long long DP_solve(int size, int left, int *pos_stack, int len) {
 //            }
 //            DEBUG("\n");
 //        }
+
         result1 = f1[left - 1][left - 1];
         // free
         for (int i = 0; i < left; i++) {
@@ -110,7 +112,8 @@ long long DP_solve(int size, int left, int *pos_stack, int len) {
         delete[]f2;
     }
 
-    return (result1 + result2) % MOD;
+    // TODO how to correctly calculate this value since res1 and res2 could be huge.
+    return (result1 * result2) % MOD;
 }
 
 int ms_6_17_p4::test() {
@@ -121,13 +124,13 @@ int ms_6_17_p4::test() {
     for (int i = 0; i < 1000; i++) {
         pos_stack[i] = i;
     }
-    long long result = DP_solve(size, 500, pos_stack, len);
+    long long result = DP_solve(size, 1000, pos_stack, len);
     DEBUG("%lld", result);
 }
 
 int ms_6_17_p4::run() {
-    test();
-    getchar();
+//    test();
+//    getchar();
 
     char str[1001];
     scanf("%s", str);

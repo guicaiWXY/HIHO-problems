@@ -24,8 +24,8 @@ int main() {
     Problem *problem = new _1032_longest_palindromic_substring();
 //    Problem *problem = new ms_6_17_p1();
 //    Problem *problem = new ms_6_17_p4();
-//    if (int res = problem->run()) {
-    if (int res = problem->test()) {
+    if (int res = problem->run()) {
+//    if (int res = problem->test()) {
         printf("Problem not passed.\n");
     } else
         printf("Done");
