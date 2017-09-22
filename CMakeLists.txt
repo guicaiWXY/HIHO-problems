@@ -15,8 +15,9 @@ set(SOURCE_FILES main.cpp problem.cpp problem.h
         coding-challenges/ms_6_17_p4.cpp
 #        problem-set/_1015_kmp.h
 #        problem-set/_1015_kmp.cpp
+        problem-set/_1014_trie_tree.cpp
 #        problem-set/_1015_kmp_AC1.cpp
 #        problem-set/_1015_kmp_AC2.cpp
 #        problem-set/_1032_longest_palindromic_substring.cpp
-        problem-set/_1033_alternating_sums.cpp problem-set/_1033_alternating_sums.h)
+        )
 add_executable(HIHO-problems ${SOURCE_FILES})
