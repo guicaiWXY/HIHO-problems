@@ -16,6 +16,7 @@
 #include "problem-set/_1014_trie_tree.h"
 //#include "problem-set/_1015_kmp.h"
 //#include "problem-set/_1032_longest_palindromic_substring.h"
+#include "problem-set/_1033_alternating_sums.h"
 
 int main() {
 //    Problem *problem = new week154_AC1();
